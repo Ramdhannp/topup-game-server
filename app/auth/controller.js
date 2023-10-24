@@ -76,11 +76,8 @@ module.exports = {
     signin: (req, res, next) => {
         const { email, password } = req.body //x-www-form-urlencoded
 
-        console.log(email)
-        console.log(password)
         Player.findOne({ email: email })
             .then((player) => {
-                console.log(player)
                 if (player) {
                     const checkPassword = bcrypt.compareSync(
                         password,

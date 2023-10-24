@@ -60,7 +60,6 @@ playerSchema.path('email').validate(
     //harus pakai function biasa
     async function (value) {
         try {
-            console.log(value)
             const count = await this.model('Player').countDocuments({
                 email: value,
             })

@@ -39,7 +39,6 @@ module.exports = {
         try {
             const { type, banks } = req.body
 
-            console.log(type)
             let payment = await Payment({ type, banks })
             await payment.save()
 

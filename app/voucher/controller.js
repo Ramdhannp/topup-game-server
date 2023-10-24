@@ -133,8 +133,6 @@ module.exports = {
 
             const { name, category, nominals } = req.body
 
-            console.log(name)
-
             if (req.file) {
                 let tmp_path = req.file.path
                 let originaExt =

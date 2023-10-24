@@ -8,7 +8,6 @@ module.exports = {
 
             const alert = { message: alertMessage, status: alertStatus }
             const category = await Category.find()
-            console.log(alert)
             res.render('admin/category/view_category', {
                 category,
                 alert,
