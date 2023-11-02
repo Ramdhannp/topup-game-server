@@ -90,7 +90,7 @@ module.exports = {
                                     id: player._id,
                                     username: player.username,
                                     email: player.email,
-                                    nama: player.nama,
+                                    name: player.name,
                                     phoneNumber: player.phoneNumber,
                                     avatar: player.avatar,
                                 },

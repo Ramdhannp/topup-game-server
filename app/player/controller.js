@@ -29,6 +29,7 @@ module.exports = {
     detailPage: async (req, res) => {
         try {
             const { id } = req.params
+            const  payment = await Payment.find().populate('banks')
             const voucher = await Voucher.findOne({ _id: id })
                 .populate('category')
                 .populate('nominals')
@@ -41,7 +42,10 @@ module.exports = {
             }
 
             res.status(200).json({
-                data: voucher,
+                data: {
+                    detail: voucher,
+                    payment: payment
+                },
             })
         } catch (error) {
             res.status(500).json({
@@ -98,8 +102,11 @@ module.exports = {
                     .status(404)
                     .json({ message: 'Bank game tidak ditemukan' })
 
-            let tax = (10 / 1000) * res_nominal._doc.price
-            let value = res_nominal._doc.price - tax
+            let tax = (10 / 100) * res_nominal._doc.price
+            let value = res_nominal._doc.price + tax
+            console.log(res_nominal._doc.price)
+            console.log(tax)
+            console.log(res_nominal._doc.price + tax)
 
             const payload = {
                 historyVoucherTopup: {
